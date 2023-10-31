@@ -1,5 +1,6 @@
 ﻿using GifTrackerUI.Interfaces;
 using GifTrackerUI.Models;
+using System.Text;
 using System.Text.Json;
 
 namespace GifTrackerUI.Services
@@ -34,6 +35,15 @@ namespace GifTrackerUI.Services
             }
 
             return result;
+        }
+
+        public async Task<bool> CreateGif(Gif gif)
+        {
+            var url = string.Format("/gifs");
+            var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(gif),
+                Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("/gifs", content);
+            return response.IsSuccessStatusCode;
         }
     }
 }
