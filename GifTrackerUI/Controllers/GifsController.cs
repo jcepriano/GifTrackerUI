@@ -1,4 +1,5 @@
 ﻿using GifTrackerUI.Interfaces;
+using GifTrackerUI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GifTrackerUI.Controllers
@@ -12,9 +13,10 @@ namespace GifTrackerUI.Controllers
             _gifsApiService = gifsApiService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var gifs = _gifsApiService.GetGifs();
+            var gifs = new List<Gif>();
+            gifs = await _gifsApiService.GetGifs();
             return View(gifs);
         }
     }
