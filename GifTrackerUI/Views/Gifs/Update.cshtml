@@ -1,0 +1,17 @@
+﻿@model Gif
+<h1>Update Gif</h1>
+<form method="post" action="/gifs/@Model.Id">
+    <div class="form-group">
+        <label for="Name">Name: </label>
+        <input type="text" id="Name" name="Name" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label for="Url">Url: </label>
+        <input type="url" id="Url" name="Url" value="@Model.Url"/>
+    </div>
+    <div class="form-group">
+        <label for="Rating">Rating: </label>
+        <input type="number" id="Rating" name="Rating" value="@Model.Rating"/>
+    </div>
+    <button type="submit">Update Gif</button>
+</form>
