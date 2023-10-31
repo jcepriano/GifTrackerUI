@@ -19,5 +19,24 @@ namespace GifTrackerUI.Controllers
             gifs = await _gifsApiService.GetGifs();
             return View(gifs);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+       [HttpPost]
+        public async Task<IActionResult> Index(Gif gif)
+        {
+            var result = await _gifsApiService.CreateGif(gif);
+            if (result)
+            {
+                return Redirect("/gifs");
+            }
+            else
+            {
+                return Redirect("/gifs/create");
+            }
+        }
     }
 }
