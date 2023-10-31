@@ -1,0 +1,10 @@
+﻿@model List<Gif>
+
+    <h1>All Gifs</h1>
+
+@foreach(Gif gif in Model)
+{
+    <h3>@gif.Name</h3>
+    <image src="@gif.Url"></image>
+    <p>Rating: @gif.Rating</p>
+}
