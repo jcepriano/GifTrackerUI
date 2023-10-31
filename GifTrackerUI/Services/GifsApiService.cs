@@ -40,15 +40,8 @@ namespace GifTrackerUI.Services
         public async Task<bool> CreateGif(Gif gif)
         {
             var url = string.Format("/gifs");
-            var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(gif), Encoding.UTF8, "application/json");
-            var gifData = new Dictionary<string, string>
-            {
-                {"id", "0" },
-                {"name", gif.Name },
-                {"url", gif.Url },
-                {"rating", gif.Rating.ToString() }
-            };
-            var gifFormData = new FormUrlEncodedContent(gifData);
+            var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(gif),
+                Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync("/gifs", content);
             return response.IsSuccessStatusCode;
         }
