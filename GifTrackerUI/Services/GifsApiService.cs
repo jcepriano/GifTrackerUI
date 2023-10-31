@@ -42,7 +42,16 @@ namespace GifTrackerUI.Services
             var url = string.Format("/gifs");
             var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(gif),
                 Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("/gifs", content);
+            var response = await _httpClient.PostAsync(url, content);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> UpdateGif(int id, Gif gif)
+        {
+            var url = string.Format("/gifs/{0}", id);
+            var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(gif),
+                Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync(url, content);
             return response.IsSuccessStatusCode;
         }
     }

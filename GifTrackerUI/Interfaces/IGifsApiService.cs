@@ -6,5 +6,6 @@ namespace GifTrackerUI.Interfaces
     {
         Task<List<Gif>> GetGifs();
         Task<bool> CreateGif(Gif gif);
+        Task<bool> UpdateGif(int id, Gif gif);
     }
 }
