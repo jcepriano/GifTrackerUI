@@ -54,5 +54,12 @@ namespace GifTrackerUI.Services
             var response = await _httpClient.PutAsync(url, content);
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<bool> DeleteGif(int id)
+        {
+            var url = string.Format("/gifs/{0}", id);
+            var response = await _httpClient.DeleteAsync(url);
+            return response.IsSuccessStatusCode;
+        }
     }
 }
