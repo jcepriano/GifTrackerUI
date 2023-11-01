@@ -62,5 +62,20 @@ namespace GifTrackerUI.Controllers
                 return Redirect("/gifs/create");
             }
         }
+
+        [HttpPost]
+        [Route("gifs/{id:int}/delete")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            var result = await _gifsApiService.DeleteGif(id);
+            if (result)
+            {
+                return Redirect("/gifs");
+            }
+            else
+            {
+                return Redirect("/gifs/create");
+            }
+        }
     }
 }

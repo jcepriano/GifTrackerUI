@@ -7,6 +7,9 @@
     <a href="gifs/@gif.Id"><h3>@gif.Name</h3></a>
     <image src="@gif.Url"></image>
     <p>Rating: @gif.Rating</p>
+    <form method="post" action="/gifs/@gif.Id/delete">
+        <button type="submit">Delete</button>    
+    </form>
 }
 
 <a href="/gifs/create">Add a gif</a>
